@@ -73,8 +73,6 @@ namespace Estacionamento
             estacionamento.RelatorioAgrupadoPorQuantidadeVeiculosDataDeUso(new DateTime());
             estacionamento.RelatorioAgrupadoPorQuantidadeVeiculosDataDeUso(DateTime.Now.AddDays(2));
             estacionamento.RelatorioTempoMedioDeCadaTipoDeVeiculo();
-
-            Estacionamento._tabelaEstacionamento.RemoveTipoVeiculo(carro);
         }
     }
 }
