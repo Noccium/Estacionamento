@@ -1,14 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Estacionamento
+namespace Estacionamento.Veiculos
 {
     public abstract class Veiculo
     {
         private string _placa;
-        private DateTime _dataEntrada;
-        private DateTime _dataSaida;
+        public DateTime _dataEntrada;
+        public DateTime _dataSaida;
+        public abstract double ValorBaseHora { get; }
+        public abstract double ValorPorHora { get; }
         public Veiculo(string placa)
         {
             SetPlaca(placa);
@@ -19,8 +18,8 @@ namespace Estacionamento
         }
         public void SetPlaca(string placa)
         {
-            _placa = Uteis.ValidaPlaca(placa) ? 
-                placa : throw new Exception("Placa Inválida! Exemplo Placa Válida: ABC1234");
+            _placa = Uteis.ValidaPlaca(placa) ?
+                placa : throw new Exception("\nPlaca Inválida! Exemplo Placa Válida: ABC1234\n");
         }
         public DateTime GetDataEntrada()
         {

@@ -1,12 +1,9 @@
-﻿using Estacionamento;
-using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace ProjetoEstacionamento.Veiculos
+﻿namespace Estacionamento.Veiculos
 {
     public class Camionete : Veiculo
     {
+        public override double ValorBaseHora => 3;
+        public override double ValorPorHora => 5;
         public Camionete(string placa) : base(placa)
         {
         }
@@ -16,7 +13,7 @@ namespace ProjetoEstacionamento.Veiculos
         }
         public override string ToString()
         {
-            return "Camionete " + this.GetPlaca();
+            return "Camionete " + GetPlaca();
         }
     }
 }
