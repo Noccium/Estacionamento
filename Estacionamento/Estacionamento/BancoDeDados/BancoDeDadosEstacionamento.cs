@@ -55,11 +55,11 @@ namespace Estacionamento.BancoDeDados
                 _tabela[veiculo.GetTipoVeiculo()][veiculo.GetPlaca()].Clear();
             else throw new ArgumentNullException("Veiculo não existe");
         }
-        public void RemoveTipoVeiculo(Veiculo veiculo)
+        public void RemoveTipoVeiculo(EnumTipoVeiculo tipoVeiculo)
         {
-            if (TipoVeiculoExiste(veiculo))
-                _tabela[veiculo.GetTipoVeiculo()].Clear();
-            else throw new ArgumentNullException("Tipo Veiculo não existe");
+            if (_tabela.ContainsKey(tipoVeiculo))
+                _tabela.Remove(tipoVeiculo);
+            else throw new ArgumentNullException("Tipo veiculo não existe");
         }
         public bool VeiculoExiste(Veiculo veiculo)
         {
