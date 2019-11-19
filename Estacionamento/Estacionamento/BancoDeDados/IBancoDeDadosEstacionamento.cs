@@ -13,6 +13,7 @@ namespace Estacionamento
         void AdicionaOcorrencia(Veiculo veiculo);
         List<Tuple<DateTime, DateTime, double>> ListaDeOcorrencias(Veiculo veiculo);
         void RemoveVeiculo(Veiculo veiculo);
+        void RemoveTipoVeiculo(EnumTipoVeiculo tipoVeiculo);
         bool VeiculoExiste(Veiculo veiculo);
         bool TipoVeiculoExiste(Veiculo veiculo);
     }
