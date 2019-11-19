@@ -68,7 +68,46 @@ namespace Estacionamento
             }
             Console.WriteLine("-------------------------------------------------------");
         }
+        
+        public void RelatorioEntreDatas(DateTime dataInicio, DateTime dataFim)
+        {
+          Dictionary<EnumTipoVeiculo, List<string>> veiculosDeterminadaData = new Dictionary<EnumTipoVeiculo, List<string>>();
 
+            Console.WriteLine("Relatório Entre Datas");
+            for (DateTime data = dataInicio; data.Date <= dataFim.Date; data = data.AddDays(1))
+            {
+                foreach (var tipo in _tabelaEstacionamento._tabela)
+                {
+                    
+                    foreach (var veiculo in tipo.Value)
+                    {
+                        if (veiculo.Value.Any(ocorrencia => ocorrencia.Item1.Date == data.Date))
+                        { 
+                            if(!veiculosDeterminadaData.ContainsKey(tipo.Key))
+                               veiculosDeterminadaData.Add(tipo.Key, new List<string>());
+                            veiculosDeterminadaData[tipo.Key].Add(veiculo.Key);                           
+                        }
+                    }
+                }
+
+                if(veiculosDeterminadaData.Count != 0)
+                {
+                    Console.WriteLine("---------------------");
+                    Console.WriteLine("Data " + data.ToString("d"));
+                    foreach (var tipo in veiculosDeterminadaData)
+                    {
+                        Console.WriteLine();
+                        Console.WriteLine("Tipo " + tipo.Key);
+                        foreach (var placa in tipo.Value)
+                        {
+                            Console.WriteLine(placa);
+                        }
+                    } 
+                }
+                veiculosDeterminadaData.Clear();
+            }     
+        }
+        
         public void RelatorioOrdenadoPorTipoEPlaca()
         {
             Console.WriteLine("Relatório Ordenado por Tipo e Placa");
